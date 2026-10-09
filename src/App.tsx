@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle2, X } from 'lucide-react';
 import { Header } from '@/components/Header';
-import { MapPlaceholder } from '@/components/MapPlaceholder';
 import { AlertsFeed } from '@/components/AlertsFeed';
 import { SosFooter } from '@/components/SosFooter';
 import { TRANSLATIONS, type Language } from '@/translations';
+import HazardMap from './HazardMap';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>('en');
@@ -30,7 +30,11 @@ export default function App() {
           appName={t.appName}
         />
 
-        <MapPlaceholder label={t.mapPlaceholder} />
+        {/* --- INJECTED HAZARD MAP HERE --- */}
+        <div id="map-container" className="h-[400px] w-full relative z-0 border-y border-gray-200">
+          <HazardMap />
+        </div>
+        {/* -------------------------------- */}
 
         <AlertsFeed t={t} />
 
