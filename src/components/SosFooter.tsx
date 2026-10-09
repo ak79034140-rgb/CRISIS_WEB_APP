@@ -14,8 +14,10 @@ export function SosFooter({ label, onSos, active }: any) {
           setLocation(`Lat: ${position.coords.latitude.toFixed(4)}, Lng: ${position.coords.longitude.toFixed(4)}`);
         },
         (error) => {
-          setLocation("Location access denied by user.");
-        }
+          console.log("Using fallback demo location");
+          setLocation("Lat: 12.8400, Lng: 80.1530 (Demo Location)");
+        },
+        { enableHighAccuracy: true, timeout: 5000}
       );
     }
   };
